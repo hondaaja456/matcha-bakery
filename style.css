@@ -244,3 +244,17 @@ body {
     padding: 1.6rem;
   }
 }
+
+
+.cartWidget {
+  width: 80px; 
+  height: 80px;
+}
+
+.cartWidget .cart-img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
