@@ -84,3 +84,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (firstCard) firstCard.focus();
   }
 });
+
+/* Cart widget (top-right) */
+#cartWidget {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2000;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.cart-icon {
+  width: 26px;
+  height: 26px;
+}
+
+#cartCount {
+  background: #7bc45e; /* matcha green */
+  color: white;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+}
