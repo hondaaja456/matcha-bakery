@@ -247,4 +247,309 @@ body {
 
 
 
+/* Core site styles (existing rules should remain above/below as needed)
+   Added styles for:
+   - cart button + badge
+   - product & cart modals
+   - cart list and buttons
+*/
+
+/* Reset some modal defaults */
+.modal {
+  /* keep hidden by default; script toggles display/aria-hidden */
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+/* dimmed overlay */
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+/* modal panel */
+.modal-content {
+  position: relative;
+  z-index: 1001;
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  overflow: hidden;
+  transform-origin: center;
+  animation: modalEnter 180ms ease;
+  box-sizing: border-box;
+  padding: 0.75rem;
+}
+
+/* small entrance animation */
+@keyframes modalEnter {
+  from { transform: translateY(-6px) scale(0.995); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* modal close button */
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+  color: #333;
+}
+.modal-close:focus {
+  outline: 3px solid rgba(76,175,80,0.2);
+  border-radius: 6px;
+}
+
+/* modal body layout */
+.modal-body {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* image in product modal */
+.modal-image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex: 0 0 160px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* info section */
+.modal-info {
+  flex: 1 1 auto;
+}
+
+/* modal text */
+.modal-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.125rem;
+}
+.modal-price {
+  margin: 0 0 0.6rem 0;
+  color: #444;
+  font-weight: 600;
+}
+.modal-desc {
+  margin: 0 0 0.75rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* CTA buttons */
+.cta-button {
+  background: #3b8b4a;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(59,139,74,0.14);
+}
+.cta-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.cta-button:focus {
+  outline: 3px solid rgba(59,139,74,0.18);
+  border-radius: 8px;
+}
+
+/* Secondary button used for Clear etc. */
+.secondary-button {
+  background: #f4f4f4;
+  color: #222;
+  border: 1px solid #e0e0e0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.secondary-button:focus {
+  outline: 3px solid rgba(0,0,0,0.06);
+}
+
+/* Header cart button + badge */
+.cart-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1e1e1e;
+  transition: background 120ms ease, transform 80ms ease;
+}
+.cart-button:hover {
+  background: rgba(59,139,74,0.06);
+}
+.cart-button:active { transform: translateY(1px); }
+.cart-button:focus {
+  outline: 3px solid rgba(59,139,74,0.16);
+  border-radius: 8px;
+}
+
+/* numeric badge */
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  background: #e74c3c; /* red badge */
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(231,76,60,0.18);
+}
+
+/* Cart modal specific tweaks */
+#cartModal .modal-content {
+  max-width: 720px;
+  width: 100%;
+  padding: 0.9rem;
+}
+.cart-list {
+  margin-top: 0.75rem;
+  display: block;
+}
+
+/* Cart item */
+.cart-item {
+  padding: 0.6rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+}
+.cart-item + .cart-item {
+  margin-top: 0.5rem;
+}
+
+/* small image in cart */
+.cart-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  display: block;
+}
+
+/* item meta */
+.cart-item > div:first-child {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.cart-item .meta {
+  min-width: 0;
+}
+.cart-item .meta .name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cart-item .meta .price {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* item controls group */
+.cart-item button {
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cart-item button:focus {
+  outline: 3px solid rgba(0,0,0,0.06);
+}
+
+/* quantity text */
+.cart-item span {
+  min-width: 24px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* cart footer */
+.cart-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+#cartTotal {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal-body {
+    flex-direction: column;
+  }
+  .modal-image {
+    width: 100%;
+    height: 200px;
+    flex: 0 0 auto;
+  }
+  .modal-content { padding: 0.6rem; }
+  .cart-item { flex-direction: column; align-items: stretch; }
+  .cart-item > div:first-child { gap: 0.5rem; }
+}
+
+/* Utility focus indicator for interactive elements that may be generated dynamically */
+button:focus, a:focus {
+  outline-offset: 2px;
+}
+
+/* Small visual improvement to product cards so the modal trigger is clearer */
+.card {
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.card:focus, .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+
 
