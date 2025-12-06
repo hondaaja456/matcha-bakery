@@ -358,39 +358,39 @@ body {
   font-size: 0.95rem;
 }
 
-/* CTA buttons */
-.cta-button {
-  background: #3b8b4a;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 0.9rem;
-  border-radius: 8px;
+#cartModal .cta-button,
+#cartModal .secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.9rem;   /* match CTA padding */
+  height: 40px;            /* consistent visual height */
+  min-width: 120px;        /* optional: gives both a similar base width */
   font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 6px 14px rgba(59,139,74,0.14);
-}
-.cta-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-.cta-button:focus {
-  outline: 3px solid rgba(59,139,74,0.18);
+  font-size: 0.95rem;
+  line-height: 1;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
-/* Secondary button used for Clear etc. */
-.secondary-button {
+/* Keep secondary button's outline style but same sizing */
+#cartModal .secondary-button {
   background: #f4f4f4;
   color: #222;
   border: 1px solid #e0e0e0;
-  padding: 0.6rem 0.9rem;
-  border-radius: 8px;
-  cursor: pointer;
-  line-height: 1.2;
+  box-shadow: none; /* remove CTA shadow so visual weight differs only by fill */
 }
-.secondary-button:focus {
-  outline: 3px solid rgba(0,0,0,0.06);
+
+/* If you want Clear to look exactly like Checkout (filled), uncomment:
+#cartModal .secondary-button {
+  background: #3b8b4a;
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 14px rgba(59,139,74,0.14);
 }
+*/
+
+
 
 /* Header cart button + badge */
 .cart-button {
