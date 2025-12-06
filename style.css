@@ -552,5 +552,46 @@ button:focus, a:focus {
   box-shadow: 0 8px 30px rgba(0,0,0,0.06);
 }
 
+/* ----------------------
+   Added overrides to make Clear (secondary-button) match Checkout (cta-button)
+   ---------------------- */
 
+/* prefer border-box for consistent sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
+/* Make secondary-button in cart footer and cart-item match the CTA sizing and alignment.
+   This selector is intentionally more specific than the general .cart-item button rule so it wins
+   without needing !important. Tweak min-width/height/padding as needed for your layout. */
+.cart-footer .secondary-button,
+.cart-footer .cta-button,
+.cart-item .secondary-button {
+  padding: 0.75rem 1rem;          /* match CTA */
+  height: 40px;                  /* consistent visual height */
+  min-width: 140px;              /* optional: make buttons similar width */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(123,196,94,0.08);
+  border: none;                  /* match CTA look; remove if you want outlined clear */
+}
+
+/* If you want the Clear button to keep its outlined style, use this instead:
+.cart-footer .secondary-button,
+.cart-item .secondary-button {
+  border: 1px solid #e0e0e0;
+  background: #f4f4f4;
+  color: #222;
+}
+*/
+
+/* If some other rule still wins, you can diagnose with devtools:
+   - Inspect the Clear button
+   - Look for which selector sets padding/height
+   - Increase specificity or move this rule later in the CSS
+*/
