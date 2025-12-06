@@ -379,7 +379,7 @@ body {
   color: #222;
   border: 1px solid #e0e0e0;
   box-shadow: none; /* remove CTA shadow so visual weight differs only by fill */
-  margin-top: 10 rem;
+  margin-top: 20rem;
 }
 
 /* If you want Clear to look exactly like Checkout (filled), uncomment:
