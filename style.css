@@ -386,6 +386,7 @@ body {
   padding: 0.25rem 0.75rem;
   border-radius: 8px;
   cursor: pointer;
+  line-height: 1.2;
 }
 .secondary-button:focus {
   outline: 3px solid rgba(0,0,0,0.06);
