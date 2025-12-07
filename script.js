@@ -276,7 +276,22 @@
           const imgEl = document.querySelector(SELECTORS.modalImage);
 
           if (titleEl) titleEl.textContent = name;
-          if (priceEl) priceEl.textContent = price;
+                 if (priceEl) {
+  const medium = ds.priceMedium;
+  const large = ds.priceLarge;
+
+  // If beverage has two sizes → show both
+  if (medium && large) {
+    priceEl.innerHTML = `
+      <strong>Prices:</strong><br>
+      Medium: ${medium}<br>
+      Large: ${large}
+    `;
+  } else {
+    // Pastries or single-price items → fallback to original behavior
+    priceEl.textContent = price;
+  }
+}
           if (descEl) descEl.textContent = desc;
           if (imgEl) {
             imgEl.src = img;
