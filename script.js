@@ -276,22 +276,26 @@
           const imgEl = document.querySelector(SELECTORS.modalImage);
 
           if (titleEl) titleEl.textContent = name;
-                 if (priceEl) {
-  const medium = ds.priceMedium;
-  const large = ds.priceLarge;
+      
+      if (priceEl) {
+        // Get medium and large prices from the card
+        const medium = ds.priceMedium;
+        const large = ds.priceLarge;
 
-  // If beverage has two sizes → show both
-  if (medium && large) {
-    priceEl.innerHTML = `
-      <strong>Prices:</strong><br>
-      Medium: ${medium}<br>
-      Large: ${large}
-    `;
-  } else {
-    // Pastries or single-price items → fallback to original behavior
-    priceEl.textContent = price;
-  }
-}
+        // If beverage has two sizes → show both
+        if (medium && large) {
+          priceEl.innerHTML = `
+            <strong>Prices:</strong><br>
+            Medium: ${medium}<br>
+            Large: ${large}
+          `;
+        } else {
+          // For pastries or items with a single price, fallback to original price
+          priceEl.textContent = price;
+        }
+      }
+
+     
           if (descEl) descEl.textContent = desc;
           if (imgEl) {
             imgEl.src = img;
