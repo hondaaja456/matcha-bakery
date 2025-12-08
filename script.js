@@ -259,63 +259,63 @@
     // update badge
     updateCartBadge();
 
-    // wire up card clicks to open product modal
-    document.querySelectorAll(SELECTORS.card).forEach((card) => {
-      card.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        try {
-          const ds = card.dataset || {};
-          const name = ds.name || card.querySelector('.product-name')?.textContent || 'Unnamed';
-          const price = ds.price || card.querySelector('.price-badge')?.textContent || '$0.00';
-          const desc = ds.desc || '';
-          const img = ds.img || card.querySelector('img')?.src || '';
+  document.querySelectorAll(SELECTORS.card).forEach((card) => {
+  card.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    try {
+      const ds = card.dataset || {};
+      const name = ds.name || card.querySelector('.product-name')?.textContent || 'Unnamed';
+      const medium = ds.priceMedium || "$0.00"; // Medium price
+      const large = ds.priceLarge || "$0.00";  // Large price
+      const price = ds.price || card.querySelector('.price-badge')?.textContent || '$0.00';
+      const desc = ds.desc || '';
+      const img = ds.img || card.querySelector('img')?.src || '';
 
-          const titleEl = document.querySelector(SELECTORS.modalTitle);
-          const priceEl = document.querySelector(SELECTORS.modalPrice);
-          const descEl = document.querySelector(SELECTORS.modalDesc);
-          const imgEl = document.querySelector(SELECTORS.modalImage);
+      const titleEl = document.querySelector(SELECTORS.modalTitle);
+      const priceEl = document.querySelector(SELECTORS.modalPrice);
+      const descEl = document.querySelector(SELECTORS.modalDesc);
+      const imgEl = document.querySelector(SELECTORS.modalImage);
+      const sizeSelector = document.querySelector('#modalSizes'); // The size options div inside the modal
 
-          if (titleEl) titleEl.textContent = name;
+      // Fill modal content
+      if (titleEl) titleEl.textContent = name;
       
       if (priceEl) {
-        // Get medium and large prices from the card
-        const medium = ds.priceMedium;
-        const large = ds.priceLarge;
-
-        // If beverage has two sizes → show both
         if (medium && large) {
           priceEl.innerHTML = `
             <strong>Prices:</strong><br>
             Medium: ${medium}<br>
             Large: ${large}
           `;
+          // Show size options if the product has multiple sizes
+          sizeSelector.style.display = 'block';  // Make the size selector visible
         } else {
-          // For pastries or items with a single price, fallback to original price
-          priceEl.textContent = price;
+          priceEl.textContent = price; // For pastries or items with a single price
+          sizeSelector.style.display = 'none'; // Hide the size options for pastries
         }
       }
 
-     
-          if (descEl) descEl.textContent = desc;
-          if (imgEl) {
-            imgEl.src = img;
-            imgEl.alt = name;
-            imgEl.onerror = () => { imgEl.style.display = 'none'; };
-            imgEl.style.display = '';
-          }
+      if (descEl) descEl.textContent = desc;
+      if (imgEl) {
+        imgEl.src = img;
+        imgEl.alt = name;
+        imgEl.onerror = () => { imgEl.style.display = 'none'; };
+        imgEl.style.display = '';
+      }
 
-          // store current product on addToCart button for reference
-          const addToCartBtn = document.querySelector(SELECTORS.addToCart);
-          if (addToCartBtn) {
-            addToCartBtn.disabled = false;
-            addToCartBtn.dataset.product = JSON.stringify({ name, price, img, desc });
-          }
+      // Store the product data on the "Add to Order" button for later use
+      const addToCartBtn = document.querySelector(SELECTORS.addToCart);
+      if (addToCartBtn) {
+        addToCartBtn.disabled = false;
+        addToCartBtn.dataset.product = JSON.stringify({ name, medium, large, img, desc });
+      }
 
-          openModal(SELECTORS.productModal);
-        } catch (err) {
-          console.error('Error opening product modal', err);
-        }
-      });
+      openModal(SELECTORS.productModal); // Open the modal
+    } catch (err) {
+      console.error('Error opening product modal', err);
+    }
+  });
+
 
       // also allow keyboard activation
       card.addEventListener('keypress', (e) => {
