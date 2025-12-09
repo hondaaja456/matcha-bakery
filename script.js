@@ -309,7 +309,7 @@
       const addToCartBtn = document.querySelector(SELECTORS.addToCart);
       if (addToCartBtn) {
         addToCartBtn.disabled = false;
-        addToCartBtn.dataset.product = JSON.stringify({ name, medium, large, Venti, img, desc });
+        addToCartBtn.dataset.product = JSON.stringify({ name, medium, large, venti, img, desc });
       }
 
       openModal(SELECTORS.productModal); // Open the modal
