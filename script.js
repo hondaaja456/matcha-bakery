@@ -267,7 +267,7 @@
       const name = ds.name || card.querySelector('.product-name')?.textContent || 'Unnamed';
       const medium = ds.priceMedium || "$0.00"; // Medium price
       const large = ds.priceLarge || "$0.00";  // Large price
-      const venti = ds.priceVenti || "$0.00";  // Large price
+      const venti = ds.priceVenti || "$0.00";  // Venti price
       const price = ds.price || card.querySelector('.price-badge')?.textContent || '$0.00';
       const desc = ds.desc || '';
       const img = ds.img || card.querySelector('img')?.src || '';
@@ -282,7 +282,7 @@
       if (titleEl) titleEl.textContent = name;
       
       if (priceEl) {
-        if (medium && large && venti) {
+       if (ds.priceMedium && ds.priceLarge && ds.priceVenti) {
           priceEl.innerHTML = `
             <strong>Prices:</strong><br>
             Medium: ${medium}<br>
