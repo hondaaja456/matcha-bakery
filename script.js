@@ -267,6 +267,7 @@
       const name = ds.name || card.querySelector('.product-name')?.textContent || 'Unnamed';
       const medium = ds.priceMedium || "$0.00"; // Medium price
       const large = ds.priceLarge || "$0.00";  // Large price
+      const venti = ds.priceVenti || "$0.00";  // Large price
       const price = ds.price || card.querySelector('.price-badge')?.textContent || '$0.00';
       const desc = ds.desc || '';
       const img = ds.img || card.querySelector('img')?.src || '';
@@ -281,11 +282,12 @@
       if (titleEl) titleEl.textContent = name;
       
       if (priceEl) {
-        if (medium && large) {
+        if (medium && large && venti) {
           priceEl.innerHTML = `
             <strong>Prices:</strong><br>
             Medium: ${medium}<br>
-            Large: ${large}
+            Large: ${large}<br>
+             Venti: ${venti}
           `;
           // Show size options if the product has multiple sizes
           sizeSelector.style.display = 'block';  // Make the size selector visible
@@ -307,7 +309,7 @@
       const addToCartBtn = document.querySelector(SELECTORS.addToCart);
       if (addToCartBtn) {
         addToCartBtn.disabled = false;
-        addToCartBtn.dataset.product = JSON.stringify({ name, medium, large, img, desc });
+        addToCartBtn.dataset.product = JSON.stringify({ name, medium, large, Venti, img, desc });
       }
 
       openModal(SELECTORS.productModal); // Open the modal
@@ -346,9 +348,11 @@ if (selectedSize === 'medium') {
   finalPrice = p.medium;
 } else if (selectedSize === 'large') {
   finalPrice = p.large;
+} else if (selectedSize === 'venti') {
+  finalPrice = p.venti;  
 } else {
   // Pastries (no size selector)
-  finalPrice = p.price || p.medium || p.large || "$0.00";
+  finalPrice = p.price || p.medium || p.large || p.venti || "$0.00";
 }
 
 // Build the final cart item
