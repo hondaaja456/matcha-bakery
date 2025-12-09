@@ -265,6 +265,7 @@
     try {
       const ds = card.dataset || {};
       const name = ds.name || card.querySelector('.product-name')?.textContent || 'Unnamed';
+      const normal = ds.pricenormal || "$0.00"; // Normal price
       const medium = ds.priceMedium || "$0.00"; // Medium price
       const large = ds.priceLarge || "$0.00";  // Large price
       const venti = ds.priceVenti || "$0.00";  // Venti price
@@ -282,9 +283,10 @@
       if (titleEl) titleEl.textContent = name;
       
       if (priceEl) {
-       if (ds.priceMedium && ds.priceLarge && ds.priceVenti) {
+       if (ds.priceMedium && ds.priceLarge && ds.priceVenti &&  ds.priceNormal) {
           priceEl.innerHTML = `
             <strong>Prices:</strong><br>
+            Normal: ${normal}<br>
             Medium: ${medium}<br>
             Large: ${large}<br>
              Venti: ${venti}
@@ -309,7 +311,7 @@
       const addToCartBtn = document.querySelector(SELECTORS.addToCart);
       if (addToCartBtn) {
         addToCartBtn.disabled = false;
-        addToCartBtn.dataset.product = JSON.stringify({ name, medium, large, venti, img, desc });
+        addToCartBtn.dataset.product = JSON.stringify({ name, normal, medium, large, venti, img, desc });
       }
 
       openModal(SELECTORS.productModal); // Open the modal
@@ -346,13 +348,15 @@ let finalPrice = null;
 
 if (selectedSize === 'medium') {
   finalPrice = p.medium;
+  } else if (selectedSize === 'normal') {
+  finalPrice = p.normal;
 } else if (selectedSize === 'large') {
   finalPrice = p.large;
 } else if (selectedSize === 'venti') {
   finalPrice = p.venti;  
 } else {
   // Pastries (no size selector)
-  finalPrice = p.price || p.medium || p.large || p.venti || "$0.00";
+  finalPrice = p.price || p.normal || p.medium || p.large || p.venti || "$0.00";
 }
 
 // Build the final cart item
