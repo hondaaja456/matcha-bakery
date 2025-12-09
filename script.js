@@ -337,7 +337,29 @@
             addToCartBtn.disabled = false;
             return;
           }
-          addItemToCart(p);
+          const selectedSize = document.querySelector('#modalSizes input[name="size"]:checked')?.value;
+
+// Determine correct price
+let finalPrice = null;
+
+if (selectedSize === 'medium') {
+  finalPrice = p.medium;
+} else if (selectedSize === 'large') {
+  finalPrice = p.large;
+} else {
+  // Pastries (no size selector)
+  finalPrice = p.price || p.medium || p.large || "$0.00";
+}
+
+// Build the final cart item
+const finalItem = {
+  name: selectedSize ? `${p.name} (${selectedSize})` : p.name,
+  price: finalPrice,
+  img: p.img,
+};
+
+// Add to cart
+addItemToCart(finalItem);
           renderCart(); // update cart content if open
           // small visual confirmation: close product modal and optionally open cart
           closeModal(SELECTORS.productModal);
