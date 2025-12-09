@@ -281,21 +281,24 @@
       // Fill modal content
       if (titleEl) titleEl.textContent = name;
       
-      if (priceEl) {
-       if (ds.priceMedium && ds.priceLarge && ds.priceVenti) {
-          priceEl.innerHTML = `
-            <strong>Prices:</strong><br>
-            Medium: ${medium}<br>
-            Large: ${large}<br>
-             Venti: ${venti}
-          `;
-          // Show size options if the product has multiple sizes
-          sizeSelector.style.display = 'block';  // Make the size selector visible
-        } else {
-          priceEl.textContent = price; // For pastries or items with a single price
-          sizeSelector.style.display = 'none'; // Hide the size options for pastries
-        }
-      }
+     const medium = ds.priceMedium || null;
+const large  = ds.priceLarge  || null;
+const venti  = ds.priceVenti  || null;
+
+if (priceEl) {
+  if (medium || large || venti) {
+    priceEl.innerHTML = `
+      <strong>Prices:</strong><br>
+      ${medium ? `Medium: ${medium}<br>` : ""}
+      ${large ? `Large: ${large}<br>` : ""}
+      ${venti ? `Venti: ${venti}` : ""}
+    `;
+    sizeSelector.style.display = 'block';
+  } else {
+    priceEl.textContent = price;
+    sizeSelector.style.display = 'none';
+  }
+}
 
       if (descEl) descEl.textContent = desc;
       if (imgEl) {
