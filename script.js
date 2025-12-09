@@ -281,9 +281,7 @@
       // Fill modal content
       if (titleEl) titleEl.textContent = name;
       
-     const medium = ds.priceMedium || null;
-const large  = ds.priceLarge  || null;
-const venti  = ds.priceVenti  || null;
+     
 
 if (priceEl) {
   if (medium || large || venti) {
