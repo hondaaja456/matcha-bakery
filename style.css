@@ -397,6 +397,20 @@ html, body {
 
 
 
+.cart-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;     /* ← allows buttons to wrap instead of stretching */
+  justify-content: flex-start;
+}
+
+.cart-actions button {
+  flex: 0 0 auto;      /* ← prevents stretching */
+  width: auto;         /* ← prevents stretching */
+}
+
+
 
 
 
