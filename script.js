@@ -265,9 +265,9 @@
     try {
       const ds = card.dataset || {};
       const name = ds.name || card.querySelector('.product-name')?.textContent || 'Unnamed';
-      const medium = ds.priceMedium || "$0.00"; // Medium price
-      const large = ds.priceLarge || "$0.00";  // Large price
-      const venti = ds.priceVenti || "$0.00";  // Venti price
+      const medium = ds.priceMedium || null;
+const large = ds.priceLarge || null;
+const venti = ds.priceVenti || null;
       const price = ds.price || card.querySelector('.price-badge')?.textContent || '$0.00';
       const desc = ds.desc || '';
       const img = ds.img || card.querySelector('img')?.src || '';
@@ -283,19 +283,19 @@
       
      
 
-if (priceEl) {
-  if (medium || large || venti) {
-    priceEl.innerHTML = `
-      <strong>Prices:</strong><br>
-      ${medium ? `Medium: ${medium}<br>` : ""}
-      ${large ? `Large: ${large}<br>` : ""}
-      ${venti ? `Venti: ${venti}` : ""}
-    `;
-    sizeSelector.style.display = 'block';
-  } else {
-    priceEl.textContent = price;
-    sizeSelector.style.display = 'none';
-  }
+if (large || venti) {
+  // This is a beverage — show size options
+  priceEl.innerHTML = `
+    <strong>Prices:</strong><br>
+    Medium: ${medium}<br>
+    ${large ? `Large: ${large}<br>` : ""}
+    ${venti ? `Venti: ${venti}` : ""}
+  `;
+  sizeSelector.style.display = "block";
+} else {
+  // Pastry — show only one price
+  priceEl.textContent = medium || price;
+  sizeSelector.style.display = "none";
 }
 
       if (descEl) descEl.textContent = desc;
