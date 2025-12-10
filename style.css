@@ -1,13 +1,13 @@
-/* -------------------------------
-   BASE & GLOBAL STYLES
----------------------------------*/
 html, body {
   height: 100%;
+}
+
+body {
   margin: 0;
   font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: #4B3621;
   background-color: #F5EEDC;
-  -webkit-font-smoothing: antialiased;
+
   background-image:
     linear-gradient(135deg, rgba(75,54,33,0.02) 25%, transparent 25%),
     linear-gradient(225deg, rgba(75,54,33,0.02) 25%, transparent 25%),
@@ -16,31 +16,30 @@ html, body {
     radial-gradient(circle at 10% 20%, rgba(75,54,33,0.02) 0%, transparent 10%),
     radial-gradient(circle at 90% 80%, rgba(75,54,33,0.02) 0%, transparent 10%);
   background-size: 40px 40px;
+  -webkit-font-smoothing: antialiased;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* CONTAINER */
+/* Layout */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 1rem;
 }
 
-/* HEADER */
+/* Header */
 .site-header {
-  background-color: #7bc45e;
+  background-color: #7bc45e; /* matcha green */
   background-image:
     linear-gradient(135deg, #ffffff18 25%, transparent 25%),
     linear-gradient(225deg, #ffffff18 25%, transparent 25%),
     linear-gradient(45deg, #00000008 25%, transparent 25%),
     linear-gradient(315deg, #00000008 25%, transparent 25%);
   background-size: 32px 32px;
-  border-bottom: 4px solid #4B3621;
+  
+  border-bottom: 4px solid #4B3621; /* dark brown bakery border */
   padding: 1.8rem 0;
   text-align: center;
+
   box-shadow: 0 3px 8px rgba(0,0,0,0.16);
 }
 
@@ -57,7 +56,7 @@ html, body {
   font-size: 0.95rem;
 }
 
-/* SECTION TITLES */
+/* Section */
 .section-title {
   font-family: "Playfair Display", serif;
   color: #7bc45e;
@@ -65,14 +64,14 @@ html, body {
   font-size: 1.6rem;
 }
 
-/* GRID */
+/* Grid */
 .menu-grid {
   display: grid;
   gap: 1.25rem;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
-/* CARD */
+/* Card */
 .card {
   background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,238,220,0.9));
   border-radius: 12px;
@@ -125,30 +124,27 @@ html, body {
   box-shadow: 0 6px 12px rgba(123,196,94,0.14);
 }
 
-/* -------------------------------
-   MODAL STYLES
----------------------------------*/
+
+
 .modal {
-  display: none;
   position: fixed;
   inset: 0;
   z-index: 1200;
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
   overflow: auto;
 }
 
-.modal[aria-hidden="false"] {
-  display: flex;
-}
+
 
 .modal-overlay {
-  position: absolute;
+  position: absolute; 
   inset: 0;
   background: rgba(18,18,18,0.35);
   backdrop-filter: blur(3px);
-  z-index: 0;
+  z-index: 0; 
 }
 
 .modal-content {
@@ -161,33 +157,19 @@ html, body {
   box-shadow: 0 20px 50px rgba(75,54,33,0.25);
   overflow: hidden;
   border: 1px solid rgba(75,54,33,0.06);
-  padding: 0.75rem;
-  box-sizing: border-box;
-  transform-origin: center;
-  animation: modalEnter 180ms ease;
-}
-
-@keyframes modalEnter {
-  from { transform: translateY(-6px) scale(0.995); opacity: 0; }
-  to   { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 .modal-close {
   position: absolute;
+  right: 10px;
   top: 8px;
-  right: 8px;
-  border: none;
   background: transparent;
-  font-size: 1.25rem;
+  border: 0;
+  color: #4B3621;
+  font-size: 2rem;
   line-height: 1;
+  padding: 0.25rem 0.6rem;
   cursor: pointer;
-  padding: 6px;
-  color: #333;
-}
-
-.modal-close:focus {
-  outline: 3px solid rgba(76,175,80,0.2);
-  border-radius: 6px;
 }
 
 .modal-body {
@@ -201,8 +183,6 @@ html, body {
   height: 320px;
   object-fit: cover;
   display: block;
-  border-radius: 8px;
-  flex: 0 0 auto;
 }
 
 .modal-info {
@@ -211,7 +191,7 @@ html, body {
 
 .modal-title {
   font-family: "Playfair Display", serif;
-  margin: 0 0 0.5rem;
+  margin: 0 0 .5rem;
   color: #4B3621;
   font-size: 1.5rem;
 }
@@ -229,7 +209,29 @@ html, body {
   line-height: 1.6;
 }
 
-/* Responsive modal layout */
+/* CTA Button */
+.cta-button {
+  margin-top: 1rem;
+  background: #7bc45e;
+  color: white;
+  border: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(123,196,94,0.18);
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: rgba(75,54,33,0.7);
+  font-size: 0.9rem;
+}
+
+/* Responsive Modal */
 @media (min-width: 720px) {
   .modal-body {
     flex-direction: row;
@@ -244,9 +246,155 @@ html, body {
   }
 }
 
-/* -------------------------------
-   CART STYLES
----------------------------------*/
+
+
+/* Core site styles (existing rules should remain above/below as needed)
+   Added styles for:
+   - cart button + badge
+   - product & cart modals
+   - cart list and buttons
+*/
+
+/* Reset some modal defaults */
+.modal {
+  /* keep hidden by default; script toggles display/aria-hidden */
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+/* dimmed overlay */
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+/* modal panel */
+.modal-content {
+  position: relative;
+  z-index: 1001;
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  overflow: hidden;
+  transform-origin: center;
+  animation: modalEnter 180ms ease;
+  box-sizing: border-box;
+  padding: 0.75rem;
+}
+
+/* small entrance animation */
+@keyframes modalEnter {
+  from { transform: translateY(-6px) scale(0.995); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* modal close button */
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+  color: #333;
+}
+.modal-close:focus {
+  outline: 3px solid rgba(76,175,80,0.2);
+  border-radius: 6px;
+}
+
+/* modal body layout */
+.modal-body {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* image in product modal */
+.modal-image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex: 0 0 160px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* info section */
+.modal-info {
+  flex: 1 1 auto;
+}
+
+/* modal text */
+.modal-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.125rem;
+}
+.modal-price {
+  margin: 0 0 0.6rem 0;
+  color: #444;
+  font-weight: 600;
+}
+.modal-desc {
+  margin: 0 0 0.75rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+#cartModal .cta-button,
+#cartModal .secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.9rem;   /* match CTA padding */
+  height: 40px;            /* consistent visual height */
+  min-width: 120px;        /* optional: gives both a similar base width */
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Keep secondary button's outline style but same sizing */
+#cartModal .secondary-button {
+  background: #f4f4f4;
+  color: #222;
+  border: 1px solid #e0e0e0;
+  box-shadow: none; /* remove CTA shadow so visual weight differs only by fill */
+  margin-top: 1rem;
+}
+
+/* If you want Clear to look exactly like Checkout (filled), uncomment:
+#cartModal .secondary-button {
+  background: #3b8b4a;
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 14px rgba(59,139,74,0.14);
+}
+*/
+
+
+
+/* Header cart button + badge */
 .cart-button {
   position: relative;
   display: inline-flex;
@@ -261,14 +409,16 @@ html, body {
   color: #1e1e1e;
   transition: background 120ms ease, transform 80ms ease;
 }
-
 .cart-button:hover {
   background: rgba(59,139,74,0.06);
 }
-
 .cart-button:active { transform: translateY(1px); }
-.cart-button:focus { outline: 3px solid rgba(59,139,74,0.16); border-radius: 8px; }
+.cart-button:focus {
+  outline: 3px solid rgba(59,139,74,0.16);
+  border-radius: 8px;
+}
 
+/* numeric badge */
 .cart-count {
   display: inline-flex;
   align-items: center;
@@ -279,21 +429,23 @@ html, body {
   font-size: 12px;
   line-height: 1;
   color: #fff;
-  background: #e74c3c;
+  background: #e74c3c; /* red badge */
   border-radius: 999px;
   box-shadow: 0 4px 10px rgba(231,76,60,0.18);
 }
 
+/* Cart modal specific tweaks */
 #cartModal .modal-content {
   max-width: 720px;
+  width: 100%;
   padding: 0.9rem;
 }
-
 .cart-list {
   margin-top: 0.75rem;
   display: block;
 }
 
+/* Cart item */
 .cart-item {
   padding: 0.6rem;
   border-radius: 8px;
@@ -304,16 +456,20 @@ html, body {
   background: #fff;
   border: 1px solid #f0f0f0;
 }
+.cart-item + .cart-item {
+  margin-top: 0.5rem;
+}
 
-.cart-item + .cart-item { margin-top: 0.5rem; }
-
+/* small image in cart */
 .cart-item img {
   width: 48px;
   height: 48px;
   border-radius: 6px;
   object-fit: cover;
+  display: block;
 }
 
+/* item meta */
 .cart-item > div:first-child {
   display: flex;
   gap: 0.6rem;
@@ -321,11 +477,9 @@ html, body {
   min-width: 0;
   flex: 1 1 auto;
 }
-
 .cart-item .meta {
   min-width: 0;
 }
-
 .cart-item .meta .name {
   font-weight: 600;
   font-size: 0.95rem;
@@ -333,12 +487,12 @@ html, body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .cart-item .meta .price {
   color: #666;
   font-size: 0.9rem;
 }
 
+/* item controls group */
 .cart-item button {
   background: #fafafa;
   border: 1px solid #eee;
@@ -346,116 +500,100 @@ html, body {
   border-radius: 6px;
   cursor: pointer;
 }
-
 .cart-item button:focus {
   outline: 3px solid rgba(0,0,0,0.06);
 }
 
-.cart-item span { min-width: 24px; text-align: center; display: inline-block; }
+/* quantity text */
+.cart-item span {
+  min-width: 24px;
+  text-align: center;
+  display: inline-block;
+}
 
+/* cart footer */
 .cart-footer {
   margin-top: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
-
-#cartTotal { font-weight: 700; font-size: 1.05rem; }
-
-/* Cart buttons match CTA */
-.cart-footer .secondary-button,
-.cart-footer .cta-button {
-   flex: 0 0 auto;   /* prevent stretching */
-  width: auto;
-  padding: 0.75rem 1rem;
-  height: 40px;
-  min-width: 140px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 0.95rem;
-  border-radius: 10px;
-  box-shadow: 0 8px 18px rgba(123,196,94,0.08);
-  border: none;
+#cartTotal {
+  font-weight: 700;
+  font-size: 1.05rem;
 }
 
-
-#cartModal .cart-footer .cta-button,
-#cartModal .cart-footer .secondary-button {
-  flex: 0 0 auto !important;
-  width: auto !important;
-  min-width: 140px !important;
-  height: 40px !important;
-  padding: 0.75rem 1rem !important;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px !important;
-}
-
-
-
-.cart-actions {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;     /* ← allows buttons to wrap instead of stretching */
-  justify-content: flex-start;
-}
-
-.cart-actions button {
-  flex: 0 0 auto;      /* ← prevents stretching */
-  width: auto;         /* ← prevents stretching */
-}
-
-
-
-
-
-/* -------------------------------
-   CTA BUTTON
----------------------------------*/
-.cta-button {
-  margin-top: 1rem;
-  background: #7bc45e;
-  color: white;
-  border: 0;
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 8px 18px rgba(123,196,94,0.18);
-}
-
-/* -------------------------------
-   FOOTER
----------------------------------*/
-.site-footer {
-  margin-top: 2rem;
-  padding: 1rem 0;
-  text-align: center;
-  color: rgba(75,54,33,0.7);
-  font-size: 0.9rem;
-}
-
-/* -------------------------------
-   RESPONSIVE
----------------------------------*/
+/* Responsive */
 @media (max-width: 640px) {
-  .modal-body { flex-direction: column; }
-  .modal-image { width: 100%; height: 200px; flex: 0 0 auto; }
+  .modal-body {
+    flex-direction: column;
+  }
+  .modal-image {
+    width: 100%;
+    height: 200px;
+    flex: 0 0 auto;
+  }
   .modal-content { padding: 0.6rem; }
   .cart-item { flex-direction: column; align-items: stretch; }
   .cart-item > div:first-child { gap: 0.5rem; }
 }
 
+/* Utility focus indicator for interactive elements that may be generated dynamically */
 button:focus, a:focus {
   outline-offset: 2px;
 }
 
+/* Small visual improvement to product cards so the modal trigger is clearer */
+.card {
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
 .card:focus, .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 30px rgba(0,0,0,0.06);
 }
+
+/* ----------------------
+   Added overrides to make Clear (secondary-button) match Checkout (cta-button)
+   ---------------------- */
+
+/* prefer border-box for consistent sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Make secondary-button in cart footer and cart-item match the CTA sizing and alignment.
+   This selector is intentionally more specific than the general .cart-item button rule so it wins
+   without needing !important. Tweak min-width/height/padding as needed for your layout. */
+.cart-footer .secondary-button,
+.cart-footer .cta-button,
+.cart-item .secondary-button {
+  padding: 0.75rem 1rem;          /* match CTA */
+  height: 40px;                  /* consistent visual height */
+  min-width: 140px;              /* optional: make buttons similar width */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(123,196,94,0.08);
+  border: none;                  /* match CTA look; remove if you want outlined clear */
+}
+
+/* If you want the Clear button to keep its outlined style, use this instead:
+.cart-footer .secondary-button,
+.cart-item .secondary-button {
+  border: 1px solid #e0e0e0;
+  background: #f4f4f4;
+  color: #222;
+}
+*/
+
+/* If some other rule still wins, you can diagnose with devtools:
+   - Inspect the Clear button
+   - Look for which selector sets padding/height
+   - Increase specificity or move this rule later in the CSS
+*/
