@@ -365,8 +365,9 @@ html, body {
 
 /* Cart buttons match CTA */
 .cart-footer .secondary-button,
-.cart-footer .cta-button,
-.cart-item .secondary-button {
+.cart-footer .cta-button {
+   flex: 0 0 auto;   /* prevent stretching */
+  width: auto;
   padding: 0.75rem 1rem;
   height: 40px;
   min-width: 140px;
