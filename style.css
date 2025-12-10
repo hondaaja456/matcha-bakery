@@ -381,6 +381,25 @@ html, body {
   border: none;
 }
 
+
+#cartModal .cart-footer .cta-button,
+#cartModal .cart-footer .secondary-button {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 140px !important;
+  height: 40px !important;
+  padding: 0.75rem 1rem !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px !important;
+}
+
+
+
+
+
+
 /* -------------------------------
    CTA BUTTON
 ---------------------------------*/
