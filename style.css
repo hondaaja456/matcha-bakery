@@ -356,7 +356,7 @@ html, body {
 .cart-footer {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 1rem;
 }
@@ -376,7 +376,6 @@ html, body {
   justify-content: center;
   font-weight: 600;
   font-size: 0.95rem;
-  line-height: 1;
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(123,196,94,0.08);
   border: none;
