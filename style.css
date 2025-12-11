@@ -126,7 +126,29 @@ body {
 
 
 
+/* Floating GIF Button */
+.floating-gif {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  cursor: pointer;
+  display: block;
+}
 
+.floating-gif img {
+  width: 120px;        /* adjust size */
+  height: auto;
+  pointer-events: auto;
+  animation: floaty 2s ease-in-out infinite; /* optional cute animation */
+}
+
+/* Cute floating animation */
+@keyframes floaty {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
 
 
 
