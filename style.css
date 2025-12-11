@@ -140,8 +140,15 @@ body {
   width: 230px;       /* adjust size */
   height: auto;
   pointer-events: auto;
+   content: url("https://hondaaja456.github.io/matcha-bakery/bake/tiger2.gif");
   animation: bounce-once 0.8s ease; /* bounce only once */
 }
+
+.floating-gif:hover img {
+  content: url("https://hondaaja456.github.io/matcha-bakery/bake/tiger5.gif"); /* replace with the GIF you want on hover */
+}
+
+
 
 /* Cute floating animation */
 @keyframes bounce-once  {
