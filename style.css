@@ -130,17 +130,17 @@ body {
 .floating-gif {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   z-index: 9999;
   cursor: pointer;
   display: block;
 }
 
 .floating-gif img {
-  width: 120px;        /* adjust size */
+  width: 180px;       /* adjust size */
   height: auto;
   pointer-events: auto;
-  animation: floaty 2s ease-in-out infinite; /* optional cute animation */
+  animation: bounce-once 0.8s ease; /* bounce only once */
 }
 
 /* Cute floating animation */
