@@ -281,7 +281,13 @@ const venti = ds.priceVenti || null;
       // Fill modal content
       if (titleEl) titleEl.textContent = name;
       
-     
+     if (!large && !venti) {
+    // PASTRY → hide size selector & clear previous drink selection
+    sizeSelector.style.display = "none";
+
+    // Force Medium as the only valid size
+    document.querySelector("input[value='medium']").checked = true;
+}
 
 if (large || venti) {
   // This is a beverage — show size options
@@ -340,7 +346,12 @@ if (large || venti) {
             addToCartBtn.disabled = false;
             return;
           }
-          const selectedSize = document.querySelector('#modalSizes input[name="size"]:checked')?.value;
+          let selectedSize = null;
+
+// Only drinks can have a size (sizeSelector is visible)
+if (document.querySelector('#modalSizes').style.display !== 'none') {
+  selectedSize = document.querySelector('#modalSizes input[name="size"]:checked')?.value;
+}
 
 // Determine correct price
 let finalPrice = null;
