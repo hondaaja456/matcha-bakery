@@ -172,6 +172,16 @@ body {
   display: block;
 }
 
+
+@media (max-width: 600px) {
+  .modal-image {
+    width: 100%;
+    height: auto;        /* let image scale naturally */
+    max-height: 50vh;    /* keep it from being too tall */
+    object-fit: contain; /* prevent cropping */
+  }
+}
+
 .modal-info {
   padding: 1.25rem;
 }
