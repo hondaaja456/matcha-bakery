@@ -71,6 +71,17 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 0.75rem; /* slightly smaller gap for mobile */
+  }
+
+  .card-img {
+    height: 120px; /* optional: slightly smaller image for mobile */
+  }
+}
+
 /* Card */
 .card {
   background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,238,220,0.9));
